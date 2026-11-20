@@ -1,0 +1,136 @@
+/* =====================
+   HeroSection 首頁中央區域
+   ===================== */
+
+/* 整個區塊：撐滿視口高度，垂直置中 */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;         /* 裁切背景光暈 */
+  padding: 80px 24px 40px; /* 上方留 navbar 高度 */
+}
+
+/* 背景裝飾光暈（純裝飾，不影響佈局） */
+.hero__glow {
+  position: absolute;
+  top: 15%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.12) 0%, transparent 70%);
+  pointer-events: none;
+  filter: blur(60px);
+}
+
+/* 內容容器：置中對齊 */
+.hero__content {
+  position: relative;       /* 在光暈上層 */
+  z-index: 1;
+  text-align: center;
+  max-width: 720px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+/* 主標題 */
+.hero__title {
+  font-size: clamp(2rem, 5vw, 3.5rem); /* 自動依視口縮放 */
+  font-weight: 800;
+  line-height: 1.2;
+  color: #f1f5f9;
+  letter-spacing: -0.5px;
+}
+
+/* 副標題（兩行） */
+.hero__subtitle {
+  font-size: clamp(1rem, 2.5vw, 1.3rem);
+  font-weight: 400;
+  line-height: 1.9;
+  color: #94a3b8;           /* 淡灰色，對比主標題 */
+  letter-spacing: 0.3px;
+}
+
+/* 立即開始按鈕 */
+.hero__cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 36px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #0f172a;
+  background: linear-gradient(135deg, #38bdf8 0%, #818cf8 100%);
+  border-radius: 50px;      /* 膠囊形狀 */
+  border: none;
+  cursor: pointer;
+  letter-spacing: 0.5px;
+  margin-top: 8px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
+}
+
+.hero__cta-btn:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 12px 32px rgba(56, 189, 248, 0.4);
+  filter: brightness(1.1);
+}
+
+.hero__cta-btn:active {
+  transform: translateY(-1px) scale(1.01);
+  box-shadow: 0 6px 16px rgba(56, 189, 248, 0.3);
+}
+
+/* =====================
+   RWD 響應式
+   ===================== */
+
+/* 平板（≤ 768px） */
+@media (max-width: 768px) {
+  .hero {
+    padding: 100px 24px 60px;
+  }
+
+  .hero__glow {
+    width: 400px;
+    height: 400px;
+  }
+
+  .hero__content {
+    gap: 20px;
+  }
+
+  .hero__cta-btn {
+    padding: 13px 32px;
+    font-size: 1rem;
+  }
+}
+
+/* 手機（≤ 480px） */
+@media (max-width: 480px) {
+  .hero {
+    padding: 90px 20px 60px;
+  }
+
+  .hero__glow {
+    width: 300px;
+    height: 300px;
+  }
+
+  .hero__content {
+    gap: 16px;
+  }
+
+  .hero__cta-btn {
+    padding: 12px 28px;
+    font-size: 0.95rem;
+    width: 100%;             /* 手機版按鈕撐滿寬度 */
+    max-width: 280px;
+    justify-content: center;
+  }
+}

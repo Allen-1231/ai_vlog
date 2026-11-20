@@ -1,0 +1,234 @@
+/* =====================
+   Navbar 導覽列樣式
+   ===================== */
+
+/* 整條導覽列容器 */
+.navbar {
+  position: fixed;          /* 固定在頂端，不隨頁面滾動 */
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background-color: rgba(15, 23, 42, 0.85);  /* 半透明深色背景 */
+  backdrop-filter: blur(12px);                /* 毛玻璃效果 */
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+/* 內層：限制最大寬度並置中 */
+.navbar__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* 品牌名稱 */
+.navbar__brand {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #38bdf8;           /* 科技感亮藍色 */
+  letter-spacing: 0.5px;
+  flex-shrink: 0;           /* 避免被壓縮 */
+  transition: opacity 0.2s ease;
+}
+
+.navbar__brand:hover {
+  opacity: 0.85;
+}
+
+/* =====================
+   右側區塊（導覽 + 按鈕）
+   ===================== */
+.navbar__right {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+/* 導覽項目列表（水平排列） */
+.navbar__nav-list {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* 單一導覽連結 */
+.navbar__nav-link {
+  display: block;
+  padding: 8px 12px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #cbd5e1;           /* 淡灰白字 */
+  border-radius: 8px;
+  transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.navbar__nav-link:hover {
+  color: #f1f5f9;
+  background-color: rgba(255, 255, 255, 0.07);
+}
+
+/* =====================
+   登入 / 註冊按鈕
+   ===================== */
+.navbar__actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* 共用按鈕基礎樣式 */
+.navbar__btn {
+  padding: 8px 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border-radius: 8px;
+  transition: background-color 0.25s ease, color 0.25s ease,
+              border-color 0.25s ease, transform 0.2s ease,
+              box-shadow 0.25s ease;
+}
+
+/* 登入按鈕：外框幽靈風格 */
+.navbar__btn--ghost {
+  color: #94a3b8;
+  background-color: transparent;
+  border: 1.5px solid rgba(148, 163, 184, 0.4);
+}
+
+.navbar__btn--ghost:hover {
+  color: #f1f5f9;
+  border-color: #38bdf8;
+  background-color: rgba(56, 189, 248, 0.08);
+  transform: translateY(-1px);
+}
+
+/* 註冊按鈕：強調實心風格 */
+.navbar__btn--solid {
+  color: #0f172a;
+  background-color: #38bdf8;
+  border: 1.5px solid #38bdf8;
+}
+
+.navbar__btn--solid:hover {
+  background-color: #7dd3fc;
+  border-color: #7dd3fc;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(56, 189, 248, 0.35);
+}
+
+/* =====================
+   漢堡選單按鈕（手機版）
+   ===================== */
+.navbar__hamburger {
+  display: none;            /* 預設隱藏，手機版才顯示 */
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 36px;
+  height: 36px;
+  padding: 4px;
+  border-radius: 8px;
+  background: transparent;
+  transition: background-color 0.2s ease;
+}
+
+.navbar__hamburger:hover {
+  background-color: rgba(255, 255, 255, 0.07);
+}
+
+/* 漢堡三條橫線 */
+.navbar__hamburger-bar {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: #94a3b8;
+  border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* 漢堡 → 叉叉動畫 */
+.navbar__hamburger--open .navbar__hamburger-bar:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.navbar__hamburger--open .navbar__hamburger-bar:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+.navbar__hamburger--open .navbar__hamburger-bar:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* =====================
+   RWD 響應式：平板 & 手機
+   ===================== */
+
+/* 平板（≤ 768px）：切換為漢堡選單 */
+@media (max-width: 768px) {
+  .navbar__hamburger {
+    display: flex;          /* 顯示漢堡按鈕 */
+  }
+
+  /* 右側選單預設隱藏，切換 open 後才顯示 */
+  .navbar__right {
+    display: none;
+    position: absolute;
+    top: 64px;              /* 緊接在 navbar 底部 */
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: 16px 24px 24px;
+    background-color: rgba(15, 23, 42, 0.97);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  .navbar__right--open {
+    display: flex;          /* 漢堡開啟時才展開 */
+  }
+
+  /* 導覽列表改為垂直排列 */
+  .navbar__nav-list {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 4px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  }
+
+  .navbar__nav-link {
+    padding: 12px 8px;
+    font-size: 1rem;
+  }
+
+  /* 按鈕也改為垂直排列並撐滿寬度 */
+  .navbar__actions {
+    flex-direction: column;
+    padding-top: 16px;
+    gap: 8px;
+  }
+
+  .navbar__btn {
+    width: 100%;
+    padding: 12px 20px;
+    font-size: 1rem;
+    text-align: center;
+  }
+}
+
+/* 手機（≤ 480px）：字體微調 */
+@media (max-width: 480px) {
+  .navbar__inner {
+    padding: 0 16px;
+  }
+
+  .navbar__brand {
+    font-size: 1.1rem;
+  }
+}
