@@ -1,14 +1,11 @@
+import { useNavigate, Link } from "react-router";
+
 import { useState } from 'react';
 import './Navbar.css';
 
-// 導覽列項目資料（假資料，之後可依需求接路由）
-const NAV_ITEMS = [
-  { label: '首頁', href: '#' },
-  { label: '下載', href: '#download' },
-  { label: '價格方案', href: '#pricing' },
-];
-
 function Navbar() {
+  const navigate = useNavigate();
+
   // 控制手機版選單開關
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -27,9 +24,9 @@ function Navbar() {
       <div className="navbar__inner">
 
         {/* 左側：品牌名稱 */}
-        <a href="#" className="navbar__brand" onClick={closeMenu}>
+        <Link to="/" className="navbar__brand" onClick={closeMenu}>
           AI Vlog Maker
-        </a>
+        </Link>
 
         {/* 手機版漢堡選單按鈕 */}
         <button
@@ -49,23 +46,42 @@ function Navbar() {
 
           {/* 導覽項目 */}
           <ul className="navbar__nav-list">
-            {NAV_ITEMS.map(item => (
-              <li key={item.label}>
-                <a
-                  href={item.href}
-                  className="navbar__nav-link"
-                  onClick={closeMenu}
-                >
-                  {item.label}
-                </a>
-              </li>
-            ))}
+            <li>
+              <Link to="/" className="navbar__nav-link" onClick={closeMenu}>
+                首頁
+              </Link>
+            </li>
+            <li>
+              <Link to="/download" className="navbar__nav-link" onClick={closeMenu}>
+                下載
+              </Link>
+            </li>
+            <li>
+              <Link to="/pricing" className="navbar__nav-link" onClick={closeMenu}>
+                價格方案
+              </Link>
+            </li>
+            <li>
+              <Link to="/about" className="navbar__nav-link" onClick={closeMenu}>
+                關於我們
+              </Link>
+            </li>
+            <li>
+              <Link to="/projects" className="navbar__nav-link" onClick={closeMenu}>
+                我的專案
+              </Link>
+            </li>
+            <li>
+              <Link to="/settings" className="navbar__nav-link" onClick={closeMenu}>
+                設定
+              </Link>
+            </li>
           </ul>
 
           {/* 登入 / 註冊按鈕 */}
           <div className="navbar__actions">
-            <button className="navbar__btn navbar__btn--ghost">登入</button>
-            <button className="navbar__btn navbar__btn--solid">註冊</button>
+            <button className="navbar__btn navbar__btn--ghost" onClick={() => navigate("/login")}>登入</button>
+            <button className="navbar__btn navbar__btn--solid" onClick={() => navigate("/signup")}>註冊</button>
           </div>
         </div>
 

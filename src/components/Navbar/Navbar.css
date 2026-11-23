@@ -58,6 +58,7 @@
 
 /* 單一導覽連結 */
 .navbar__nav-link {
+  position: relative;         /* 讓底線以連結為基準定位 */
   display: block;
   padding: 8px 12px;
   font-size: 0.95rem;
@@ -67,9 +68,29 @@
   transition: color 0.2s ease, background-color 0.2s ease;
 }
 
+/* 藍色底線，平常縮成 0 看不見 */
+.navbar__nav-link::after {
+  content: '';
+  position: absolute;
+  left: 12px;                    /* 和 padding 左右一樣，底線才會剛好對齊文字 */
+  right: 12px;
+  bottom: 2px;
+  height: 2px;
+  background-color: #3b82f6;     /* 藍色，可換成你們的主色 */
+  border-radius: 2px;
+  transform: scaleX(0);          /* 水平縮放為 0 */
+  transform-origin: center;      /* 從中間往兩邊展開 */
+  transition: transform 0.25s ease;
+}
+
 .navbar__nav-link:hover {
   color: #f1f5f9;
   background-color: rgba(255, 255, 255, 0.07);
+}
+
+/* hover 時展開底線 */
+.navbar__nav-link:hover::after {
+  transform: scaleX(1);
 }
 
 /* =====================

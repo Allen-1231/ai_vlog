@@ -1,0 +1,237 @@
+/* 所有 class 都加上 login- 前綴，避免和其他頁面的樣式互相干擾 */
+
+.login-page {
+  --bg: #0f1115;
+  --surface: #181b22;
+  --border: #2a2f3a;
+  --text: #e8eaf0;
+  --text-muted: #8b92a3;
+  --accent: #7c5cff;
+  --accent-hover: #6a49f0;
+  --danger: #ff5c6c;
+
+  display: flex;
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Noto Sans TC", system-ui, -apple-system, sans-serif;
+}
+
+/* ---------- 左側品牌區 ---------- */
+.login-brand {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 24px;
+  padding: 64px;
+  background: linear-gradient(135deg, #1d1540 0%, #0f1115 70%);
+  border-right: 1px solid var(--border);
+}
+
+.login-brand-logo {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: var(--accent);
+}
+
+.login-brand-title {
+  margin: 0;
+  font-size: 44px;
+  line-height: 1.25;
+}
+
+.login-brand-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  color: var(--text-muted);
+}
+
+.login-brand-list li::before {
+  content: "✓";
+  margin-right: 10px;
+  color: var(--accent);
+}
+
+/* ---------- 右側表單區 ---------- */
+.login-panel {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px;
+}
+
+.login-form {
+  width: 100%;
+  max-width: 380px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.login-title {
+  margin: 0;
+  font-size: 28px;
+}
+
+.login-subtitle {
+  margin: -10px 0 8px;
+  color: var(--text-muted);
+}
+
+.login-alert {
+  padding: 10px 14px;
+  border: 1px solid var(--danger);
+  border-radius: 8px;
+  background: rgba(255, 92, 108, 0.1);
+  color: var(--danger);
+  font-size: 14px;
+}
+
+/* ---------- 欄位 ---------- */
+.login-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.login-field label {
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.login-input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--text);
+  font-size: 15px;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.login-input::placeholder {
+  color: #5b6272;
+}
+
+.login-input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(124, 92, 255, 0.25);
+}
+
+.login-input.is-error {
+  border-color: var(--danger);
+}
+
+.login-error-text {
+  font-size: 13px;
+  color: var(--danger);
+}
+
+/* 密碼欄位 + 顯示/隱藏按鈕 */
+.login-password-wrap {
+  position: relative;
+}
+
+.login-password-wrap .login-input {
+  padding-right: 64px;
+}
+
+.login-toggle-btn {
+  position: absolute;
+  top: 50%;
+  right: 8px;
+  transform: translateY(-50%);
+  padding: 6px 10px;
+  border: none;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.login-toggle-btn:hover {
+  color: var(--text);
+}
+
+/* ---------- 其他 ---------- */
+.login-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 14px;
+}
+
+.login-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-muted);
+  cursor: pointer;
+}
+
+.login-checkbox input {
+  accent-color: var(--accent);
+}
+
+.login-link-btn {
+  padding: 0;
+  border: none;
+  background: none;
+  color: var(--accent);
+  font-size: inherit;
+  cursor: pointer;
+}
+
+.login-link-btn:hover {
+  text-decoration: underline;
+}
+
+.login-submit {
+  padding: 13px;
+  border: none;
+  border-radius: 8px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.login-submit:hover:not(:disabled) {
+  background: var(--accent-hover);
+}
+
+.login-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.login-switch {
+  margin: 0;
+  text-align: center;
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.login-switch .login-link-btn {
+  margin-left: 6px;
+}
+
+/* ---------- 響應式：小螢幕隱藏左側品牌區 ---------- */
+@media (max-width: 860px) {
+  .login-brand {
+    display: none;
+  }
+}

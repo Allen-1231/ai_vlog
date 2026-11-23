@@ -1,0 +1,276 @@
+/* 所有 class 都加上 signup- 前綴，避免和其他頁面的樣式互相干擾 */
+
+.signup-page {
+  --bg: #0f1115;
+  --surface: #181b22;
+  --border: #2a2f3a;
+  --text: #e8eaf0;
+  --text-muted: #8b92a3;
+  --accent: #7c5cff;
+  --accent-hover: #6a49f0;
+  --danger: #ff5c6c;
+  --warning: #ffb547;
+  --success: #3ddc97;
+
+  display: flex;
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Noto Sans TC", system-ui, -apple-system, sans-serif;
+}
+
+/* ---------- 左側品牌區 ---------- */
+.signup-brand {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 24px;
+  padding: 64px;
+  background: linear-gradient(135deg, #1d1540 0%, #0f1115 70%);
+  border-right: 1px solid var(--border);
+}
+
+.signup-brand-logo {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: var(--accent);
+}
+
+.signup-brand-title {
+  margin: 0;
+  font-size: 44px;
+  line-height: 1.25;
+}
+
+.signup-brand-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  color: var(--text-muted);
+}
+
+.signup-brand-list li::before {
+  content: "✓";
+  margin-right: 10px;
+  color: var(--accent);
+}
+
+/* ---------- 右側表單區 ---------- */
+.signup-panel {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px;
+}
+
+.signup-form {
+  width: 100%;
+  max-width: 380px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.signup-title {
+  margin: 0;
+  font-size: 28px;
+}
+
+.signup-subtitle {
+  margin: -8px 0 6px;
+  color: var(--text-muted);
+}
+
+/* ---------- 欄位 ---------- */
+.signup-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.signup-field label {
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.signup-input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--text);
+  font-size: 15px;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.signup-input::placeholder {
+  color: #5b6272;
+}
+
+.signup-input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(124, 92, 255, 0.25);
+}
+
+.signup-input.is-error {
+  border-color: var(--danger);
+}
+
+.signup-error-text {
+  font-size: 13px;
+  color: var(--danger);
+}
+
+/* 密碼欄位 + 顯示/隱藏按鈕 */
+.signup-password-wrap {
+  position: relative;
+}
+
+.signup-password-wrap .signup-input {
+  padding-right: 64px;
+}
+
+.signup-toggle-btn {
+  position: absolute;
+  top: 50%;
+  right: 8px;
+  transform: translateY(-50%);
+  padding: 6px 10px;
+  border: none;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.signup-toggle-btn:hover {
+  color: var(--text);
+}
+
+/* ---------- 密碼強度條 ---------- */
+.signup-strength {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 2px;
+}
+
+.signup-strength-bars {
+  flex: 1;
+  display: flex;
+  gap: 6px;
+}
+
+.signup-strength-bar {
+  flex: 1;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--border);
+  transition: background 0.2s;
+}
+
+.signup-strength-bar.is-weak {
+  background: var(--danger);
+}
+
+.signup-strength-bar.is-medium {
+  background: var(--warning);
+}
+
+.signup-strength-bar.is-strong {
+  background: var(--success);
+}
+
+.signup-strength-label {
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.signup-strength-label.is-weak {
+  color: var(--danger);
+}
+
+.signup-strength-label.is-medium {
+  color: var(--warning);
+}
+
+.signup-strength-label.is-strong {
+  color: var(--success);
+}
+
+/* ---------- 其他 ---------- */
+.signup-checkbox {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--text-muted);
+  cursor: pointer;
+}
+
+.signup-checkbox input {
+  margin-top: 3px;
+  accent-color: var(--accent);
+}
+
+.signup-link-btn {
+  padding: 0;
+  border: none;
+  background: none;
+  color: var(--accent);
+  font-size: inherit;
+  cursor: pointer;
+}
+
+.signup-link-btn:hover {
+  text-decoration: underline;
+}
+
+.signup-submit {
+  padding: 13px;
+  border: none;
+  border-radius: 8px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.signup-submit:hover:not(:disabled) {
+  background: var(--accent-hover);
+}
+
+.signup-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.signup-switch {
+  margin: 0;
+  text-align: center;
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.signup-switch .signup-link-btn {
+  margin-left: 6px;
+}
+
+/* ---------- 響應式：小螢幕隱藏左側品牌區 ---------- */
+@media (max-width: 860px) {
+  .signup-brand {
+    display: none;
+  }
+}
