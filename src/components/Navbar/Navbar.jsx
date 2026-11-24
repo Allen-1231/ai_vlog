@@ -67,11 +67,6 @@ function Navbar() {
               </Link>
             </li>
             <li>
-              <Link to="/projects" className="navbar__nav-link" onClick={closeMenu}>
-                我的專案
-              </Link>
-            </li>
-            <li>
               <Link to="/settings" className="navbar__nav-link" onClick={closeMenu}>
                 設定
               </Link>
